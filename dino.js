@@ -44,7 +44,7 @@ function Dino()
                 graphics = graphics_left_leg;
         }
         else
-        graphics = graphics_air;
+            graphics = graphics_air;
 
         image(graphics, this.x, this.y - this.height, this.width, this.height);
     }
@@ -56,10 +56,5 @@ function Dino()
             this.yVel = -this.jumpStrength;
             this.grounded = false;
         }
-    }
-
-    this.reset = function()
-    {
-
     }
 }
