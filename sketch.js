@@ -33,6 +33,20 @@ function draw()
 {
 	background(255);
 
+	if (frameCount % 8 == 0)
+	{
+		score += 1;
+		if (score > highScore)
+			highScore = score;
+	}
+
+	textAlign(RIGHT);
+	textStyle(BOLD);
+	textSize(16);
+	text(score, width - 10, 25);
+	textStyle(NORMAL);
+	text(highScore, width - 10, 45);
+
 	ground.update();
 	ground.show();
 
@@ -69,13 +83,7 @@ function draw()
 		cactus[i].show();
 
 		if (cactus[i].offscreen())
-		{
 			cactus.splice(i, 1);
-
-			score += 1;
-			if (score > highScore)
-				highScore = score;
-		}
 		
 		if (cactus[i])
 		{
