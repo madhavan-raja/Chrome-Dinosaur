@@ -1,20 +1,22 @@
 function Dino()
 {
-    this.x = 100;
+    this.x = 0;
     this.y = height;
 
-    this.width = 30;
+    this.width = 45;
     this.height = 50;
 
     this.yVel = 0;
-    this.gravity = 1;
+    this.gravity = 0.8;
 
     this.grounded = true;
     this.jumpStrength = 15;
 
-    // var graphics;
+    var graphics_right_leg, graphics_left_leg;
 
-    // graphics = loadImage('assets/dino.jpg');
+    graphics_right_leg = loadImage('assets/dino_right_leg.png');
+    graphics_left_leg = loadImage('assets/dino_left_leg.png');
+    graphics_air = loadImage('assets/dino_air.png');
 
     this.update = function()
     {
@@ -32,9 +34,19 @@ function Dino()
 
     this.show = function()
     {
-        fill(255);
-        rect(this.x, this.y - this.height, this.width, this.height);
-        // image(graphics, this.x, this.y - this.height);
+        var graphics;
+
+        if (this.grounded)
+        {
+            if ((int)(frameCount / 10) % 2 == 0)
+                graphics = graphics_right_leg;
+            else
+                graphics = graphics_left_leg;
+        }
+        else
+        graphics = graphics_air;
+
+        image(graphics, this.x, this.y - this.height, this.width, this.height);
     }
 
     this.jump = function()
