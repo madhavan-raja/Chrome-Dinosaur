@@ -12,6 +12,10 @@ function Dino()
     this.grounded = true;
     this.jumpStrength = 15;
 
+    // var graphics;
+
+    // graphics = loadImage('assets/dino.jpg');
+
     this.update = function()
     {
         this.yVel += this.gravity;
@@ -30,6 +34,7 @@ function Dino()
     {
         fill(255);
         rect(this.x, this.y - this.height, this.width, this.height);
+        // image(graphics, this.x, this.y - this.height);
     }
 
     this.jump = function()
@@ -43,6 +48,6 @@ function Dino()
 
     this.reset = function()
     {
-        
+
     }
 }

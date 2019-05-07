@@ -1,4 +1,4 @@
-var dino;
+var dinoGraphics;
 var cactus = [];
 
 let score = 0;
@@ -17,6 +17,8 @@ function draw()
 	background(51);
 
 	dino.update();
+	rect(dino.x, dino.y - dino.height, dino.width, dino.height);
+
 	dino.show();
 
 	if (frameCount % 150 == 0)
