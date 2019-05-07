@@ -56,7 +56,7 @@ function draw()
 	if (nextCactus <= 0)
 	{
 		cactus.push(new Cactus());
-		nextCactus = random(100, 200);
+		nextCactus = random(70, 150);
 	}
 
 	if (nextCloud <= 0)
