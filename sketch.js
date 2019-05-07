@@ -4,12 +4,21 @@ var dino;
 var cactus = [];
 var ground;
 
+var game_over;
+let game_over_width = 250;
+let game_over_height = 100;
+
 let score = 0;
 let highScore = 0;
 
 let movementVelocity = -5;
 
 let nextCactus = 0;
+
+function preload()
+{
+	game_over = loadImage('assets/game_over.png');
+}
 
 function setup()
 {
@@ -56,9 +65,9 @@ function draw()
 			{
 				cactus = [];
 				score = 0;
-
 				ground.x = 0;
 
+				image(game_over, width / 2 - game_over_width / 2, height / 2 - game_over_height / 2, game_over_width, game_over_height);
 				noLoop();
 			}
 		}
@@ -68,9 +77,17 @@ function draw()
 function keyPressed()
 {
 	if (key == ' ')
-	{
-		dino.jump();
-		isPlaying = true;
-		loop();
-	}
+		action();
+}
+
+function mousePressed()
+{
+	action();
+}
+
+function action()
+{
+	dino.jump();
+	isPlaying = true;
+	loop();
 }
