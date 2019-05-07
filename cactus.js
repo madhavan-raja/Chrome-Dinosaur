@@ -1,16 +1,16 @@
 function Cactus()
 {
+    var graphics = loadImage('assets/cacti.png');
+
     this.x = width;
-    this.y = height;
+    this.y = height - 10;
 
     this.width = 20;
     this.height = 30;
 
-    this.xVel = -5;
-
     this.update = function()
     {
-        this.x += this.xVel;
+        this.x += movementVelocity;
     }
 
     this.offscreen = function()
@@ -20,8 +20,7 @@ function Cactus()
 
     this.show = function()
     {
-        fill(255);
-        rect(this.x, this.y - this.height, this.width, this.height);
+        image(graphics, this.x, this.y - this.height, this.width, this.height);
     }
 
     this.hits = function(dino)
