@@ -2,6 +2,7 @@ let isPlaying = false;
 
 var dino;
 var cactus = [];
+var clouds = [];
 var ground;
 
 var game_over;
@@ -14,6 +15,7 @@ let highScore = 0;
 let movementVelocity = -5;
 
 let nextCactus = 0;
+let nextCloud = 0;
 
 function preload()
 {
@@ -43,7 +45,23 @@ function draw()
 		nextCactus = random(100, 200);
 	}
 
+	if (nextCloud <= 0)
+	{
+		clouds.push(new Cloud());
+		nextCloud = random(80, 120);
+	}
+
 	nextCactus--;
+	nextCloud--;
+
+	for (let i = clouds.length - 1; i >= 0; i--)
+	{
+		clouds[i].update();
+		clouds[i].show();
+
+		if (clouds[i].offscreen())
+			clouds.splice(i, 1);
+	}
 
 	for (let i = cactus.length - 1; i >= 0; i--)
 	{
@@ -64,6 +82,7 @@ function draw()
 			if (cactus[i].hits(dino))
 			{
 				cactus = [];
+				clouds = [];
 				score = 0;
 				ground.x = 0;
 
