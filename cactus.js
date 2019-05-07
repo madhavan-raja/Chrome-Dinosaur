@@ -3,10 +3,10 @@ function Cactus()
     var graphics = loadImage('assets/cacti.png');
 
     this.x = width;
-    this.y = height - 10;
+    this.y = height - 5;
 
     this.width = 20;
-    this.height = 30;
+    this.height = 40;
 
     this.update = function()
     {
