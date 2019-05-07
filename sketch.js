@@ -1,3 +1,5 @@
+let isPlaying = false;
+
 var dino;
 var cactus = [];
 var ground;
@@ -7,13 +9,13 @@ let highScore = 0;
 
 let movementVelocity = -5;
 
+let nextCactus = 0;
+
 function setup()
 {
 	createCanvas(800, 200);
 	ground = new Ground();
 	dino = new Dino();
-
-	cactus.push(new Cactus());
 }
 
 function draw()
@@ -26,8 +28,13 @@ function draw()
 	dino.update();
 	dino.show();
 
-	if (frameCount % 150 == 0)
+	if (nextCactus <= 0)
+	{
 		cactus.push(new Cactus());
+		nextCactus = random(100, 200);
+	}
+
+	nextCactus--;
 
 	for (let i = cactus.length - 1; i >= 0; i--)
 	{
@@ -42,12 +49,18 @@ function draw()
 			if (score > highScore)
 				highScore = score;
 		}
-
-		if (cactus[i].hits(dino))
+		
+		if (cactus[i])
 		{
-			dino.reset();
-			cactus = [];
-			score = 0;
+			if (cactus[i].hits(dino))
+			{
+				cactus = [];
+				score = 0;
+
+				ground.x = 0;
+
+				noLoop();
+			}
 		}
 	}
 }
@@ -55,5 +68,9 @@ function draw()
 function keyPressed()
 {
 	if (key == ' ')
+	{
 		dino.jump();
+		isPlaying = true;
+		loop();
+	}
 }
