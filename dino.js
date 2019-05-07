@@ -3,8 +3,8 @@ function Dino()
     this.x = 100;
     this.y = height;
 
-    this.dinoWidth = 30;
-    this.dinoHeight = 50;
+    this.width = 30;
+    this.height = 50;
 
     this.yVel = 0;
     this.gravity = 1;
@@ -29,7 +29,7 @@ function Dino()
     this.show = function()
     {
         fill(255);
-        rect(this.x, this.y - this.dinoHeight, this.dinoWidth, this.dinoHeight);
+        rect(this.x, this.y - this.height, this.width, this.height);
     }
 
     this.jump = function()
@@ -39,5 +39,10 @@ function Dino()
             this.yVel = -this.jumpStrength;
             this.grounded = false;
         }
+    }
+
+    this.reset = function()
+    {
+        
     }
 }

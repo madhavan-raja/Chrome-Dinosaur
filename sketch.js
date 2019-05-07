@@ -36,12 +36,13 @@ function draw()
 					highScore = score;
 			}
 	
-			/*if (birds[i].hits(pipe))
+			if (cactus[i].hits(dino))
 			{
-				pipe.reset();
-				birds = [];
+				console.log("Hit");
+				dino.reset();
+				cactus = [];
 				score = 0;
-			}*/
+			}
 		}
 }
 
